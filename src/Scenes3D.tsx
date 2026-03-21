@@ -1,5 +1,6 @@
 import { useRef, useMemo, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Environment, Line } from '@react-three/drei';
 import * as THREE from 'three';
 
 /* ─── Lazy scene wrapper: only mounts Canvas when visible ─── */
@@ -28,9 +29,10 @@ export function Scene3D({ children }: { children: React.ReactNode }) {
           dpr={[1, 1.5]}
           frameloop="always"
         >
-          <ambientLight intensity={0.5} />
-          <pointLight position={[5, 5, 5]} intensity={0.8} color="#c9a96e" />
-          <pointLight position={[-4, -2, 4]} intensity={0.4} color="#7a9e7e" />
+          <ambientLight intensity={1.2} />
+          <pointLight position={[5, 6, 5]} intensity={1.5} color="#c9a96e" />
+          <pointLight position={[-4, -2, 4]} intensity={0.8} color="#7a9e7e" />
+          <Environment preset="city" environmentIntensity={0.6} />
           <Suspense fallback={null}>{children}</Suspense>
         </Canvas>
       )}
@@ -53,7 +55,7 @@ function Panel({ pos, rot, scale, color = '#1a1a1a' }: {
   return (
     <mesh ref={ref} position={pos} rotation={rot} scale={scale}>
       <boxGeometry args={[1, 1, 0.03]} />
-      <meshStandardMaterial color={color} transparent opacity={0.35} roughness={0.2} metalness={0.3} side={THREE.DoubleSide} />
+      <meshPhysicalMaterial color={color} transmission={0.8} transparent opacity={1} roughness={0.15} metalness={0.5} clearcoat={1} clearcoatRoughness={0.1} side={THREE.DoubleSide} />
     </mesh>
   );
 }
@@ -73,7 +75,7 @@ export function ClaimLensScene() {
       {[[-0.3, 0.35, '#c9a96e'], [-0.1, 0.55, '#c9a96e'], [0.1, 0.4, '#7a9e7e'], [0.3, 0.6, '#c9a96e'], [0.5, 0.42, '#7a9e7e']].map(([x, h, c], i) => (
         <mesh key={i} position={[Number(x) - 0.3, Number(h) / 2 - 0.4, 0.04]}>
           <boxGeometry args={[0.07, Number(h), 0.02]} />
-          <meshStandardMaterial color={c as string} emissive={c as string} emissiveIntensity={0.5} />
+          <meshStandardMaterial color={c as string} emissive={c as string} emissiveIntensity={2.5} toneMapped={false} />
         </mesh>
       ))}
       {/* Accent dots */}
@@ -98,15 +100,7 @@ export function CrewAIScene() {
     [-1.2, 0.5, 0], [1.0, 0.8, -0.3], [0, -0.6, 0.5], [1.3, -0.4, -0.2], [-0.8, -0.3, -0.5]
   ], []);
 
-  const connections = useMemo(() => [[0,1],[1,2],[2,3],[3,4],[4,0],[0,2],[1,3]], []);
-
-  const lineGeos = useMemo(() =>
-    connections.map(([a, b]) =>
-      new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(...nodes[a]),
-        new THREE.Vector3(...nodes[b]),
-      ])
-    ), [nodes, connections]);
+  // No longer need lineGeos with BufferGeometry since we use drei's Line component
 
   return (
     <group ref={g}>
@@ -114,7 +108,7 @@ export function CrewAIScene() {
         <group key={i}>
           <mesh position={pos}>
             <sphereGeometry args={[0.25 + (i % 3) * 0.05, 16, 16]} />
-            <meshStandardMaterial color="#1f1a14" transparent opacity={0.25} roughness={0.1} metalness={0.3} />
+            <meshPhysicalMaterial color="#1f1a14" transmission={0.9} transparent opacity={1} roughness={0.1} metalness={0.5} clearcoat={1} />
           </mesh>
           <mesh position={pos}>
             <sphereGeometry args={[0.09, 8, 8]} />
@@ -122,10 +116,8 @@ export function CrewAIScene() {
           </mesh>
         </group>
       ))}
-      {lineGeos.map((geo, i) => (
-        <line key={i} geometry={geo}>
-          <lineBasicMaterial color="#c9a96e" transparent opacity={0.12} />
-        </line>
+      {[[0,1],[1,2],[2,3],[3,4],[4,0],[0,2],[1,3]].map(([a, b], i) => (
+        <Line key={i} points={[nodes[a], nodes[b]]} color="#c9a96e" transparent opacity={0.12} lineWidth={1.5} />
       ))}
     </group>
   );
@@ -141,7 +133,7 @@ function Finger({ pos, rot, len, r }: {
     <group position={pos} rotation={rot}>
       <mesh position={[0, len / 2, 0]}>
         <capsuleGeometry args={[r, len, 4, 8]} />
-        <meshStandardMaterial color="#1f1a14" transparent opacity={0.25} roughness={0.1} metalness={0.3} />
+        <meshPhysicalMaterial color="#1a1510" transmission={0.9} transparent opacity={1} roughness={0.1} metalness={0.4} clearcoat={1} />
       </mesh>
       <mesh position={[0, len + r, 0]}>
         <sphereGeometry args={[r * 0.55, 8, 8]} />
@@ -162,7 +154,7 @@ export function HandSignScene() {
     <group ref={g} position={[0, -0.3, 0]} scale={1.3}>
       <mesh>
         <boxGeometry args={[1, 1.1, 0.22]} />
-        <meshStandardMaterial color="#1f1a14" transparent opacity={0.22} roughness={0.1} metalness={0.3} />
+        <meshPhysicalMaterial color="#1a1510" transmission={0.9} transparent opacity={1} roughness={0.1} metalness={0.4} clearcoat={1} />
       </mesh>
       <mesh position={[0, 0, 0.05]}>
         <sphereGeometry args={[0.1, 8, 8]} />
@@ -210,7 +202,7 @@ export function BatteryScene() {
     <group ref={g}>
       <mesh>
         <capsuleGeometry args={[0.6, 2, 8, 16]} />
-        <meshStandardMaterial color="#1a1a1a" transparent opacity={0.2} roughness={0.1} metalness={0.3} />
+        <meshPhysicalMaterial color="#111" transmission={0.95} transparent opacity={1} roughness={0.05} metalness={0.3} clearcoat={1} />
       </mesh>
       <mesh position={[0, 1.35, 0]}>
         <cylinderGeometry args={[0.25, 0.3, 0.15, 8]} />
