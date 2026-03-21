@@ -117,7 +117,7 @@ export default function App() {
                   I'm a <strong>B.Tech graduate in Artificial Intelligence &amp; Data Science</strong> from Viswajyothi College of Engineering and Technology. My journey took me from training CNNs for hand gesture recognition to building production healthcare infrastructure.
                 </p>
                 <p>
-                  Currently refining my full-stack engineering at <strong>JSpiders, Kochi</strong>, I've built systems that handle <strong>FHIR/HL7 compliance, SNOMED CT terminology mapping, ABDM/ABHA integration</strong>, and multi-role hospital dashboards with MFA security — not toy projects, but real infrastructure.
+                  Currently working as a <strong>Software Developer Intern at RecodeAI Solutions</strong>, I'm building the <strong>ClaimsLens</strong> hospital insurance platform — handling <strong>FHIR/HL7 compliance, SNOMED CT terminology mapping, ABDM/ABHA integration</strong>, and multi-role hospital dashboards with MFA security — not toy projects, but real infrastructure.
                 </p>
                 <p>
                   I bring a rare combination: the AI/ML mindset to model complex problems, and the software engineering discipline to ship reliable systems.
@@ -319,6 +319,12 @@ export default function App() {
             <Rv dir="left">
               <div className="journey-col-title">
                 <span className="jct-icon"><Briefcase size={16} /></span> Experience
+              </div>
+              <div className="j-item">
+                <div className="j-date">2025 — Present</div>
+                <div className="j-title">Software Developer Intern</div>
+                <div className="j-place">RecodeAI Solutions</div>
+                <div className="j-desc">Building ClaimsLens — a production hospital insurance management platform. FHIR/HL7, ABDM/ABHA, SNOMED CT, role-based dashboards, FastAPI, React, PostgreSQL, Docker, Azure.</div>
               </div>
               <div className="j-item">
                 <div className="j-date">Jul 2024 — May 2025</div>
