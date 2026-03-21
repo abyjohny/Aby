@@ -1,11 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aby Johny — Software Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Aby Johny — aspiring Software Developer skilled in Python, Java, AI/ML, and full-stack development. Explore my projects, skills, and experience." />
+  <meta name="author" content="Aby Johny" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aby Johny — Software Developer" />
+  <meta property="og:description" content="AI & Data Science graduate. Building intelligent software solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/avatar.png" />
+
+  <!-- Favicon (emoji fallback) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lucide Icons (lightweight) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 <body>
-    <h1>Hello</h1>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Aby<span>.</span></a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span> Open to Opportunities
+        </div>
+        <h1 class="hero-name">
+          Hi, I'm <span class="gradient-text">Aby Johny</span>
+        </h1>
+        <p class="hero-role">
+          I build&nbsp;<span class="typed-text" id="typedText"></span><span class="cursor"></span>
+        </p>
+        <p class="hero-desc">
+          AI &amp; Data Science graduate with a passion for building intelligent, production-grade software. From multi-agent AI systems to full-stack healthcare platforms — I love turning ideas into reality.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary">
+            <i data-lucide="folder-open" style="width:18px;height:18px"></i> View Projects
+          </a>
+          <a href="#contact" class="btn-outline">
+            <i data-lucide="send" style="width:18px;height:18px"></i> Get In Touch
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="assets/avatar.png" alt="Aby Johny" class="hero-avatar" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">01 &mdash; About</p>
+        <h2 class="section-title">A little <span class="gradient-text">about me</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a recent B.Tech graduate in <strong>Artificial Intelligence &amp; Data Science</strong> from Viswajyothi College of Engineering and Technology, Vazhakulam. I combine strong foundations in machine learning with hands-on full-stack development skills.
+          </p>
+          <p>
+            Currently honing my Java Full Stack skills at <strong>JSpiders, Kochi</strong>, I'm passionate about using technology to solve real-world problems — especially in healthcare and AI. I bring quick-learning abilities, creative problem-solving, and a genuine love for clean code.
+          </p>
+          <p>
+            When I'm not coding, you can find me exploring new AI frameworks, contributing to open-source, or leading youth community initiatives.
+          </p>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Projects Built</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2024</div>
+            <div class="stat-label">B.Tech Graduated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">02 &mdash; Skills</p>
+        <h2 class="section-title">My <span class="gradient-text">tech stack</span></h2>
+        <p class="section-subtitle">Technologies and tools I work with to bring ideas to life.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-icon">💻</div>
+          <h3>Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🧠</div>
+          <h3>AI & Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">Crew AI</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">⚙️</div>
+          <h3>Frameworks & Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Vite</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🗄️</div>
+          <h3>Database & Data</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">Tableau</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🏥</div>
+          <h3>Domain Knowledge</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">FHIR / HL7</span>
+            <span class="skill-tag">SNOMED CT</span>
+            <span class="skill-tag">ABDM / ABHA</span>
+            <span class="skill-tag">Healthcare IT</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">🤝</div>
+          <h3>Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Teamwork</span>
+            <span class="skill-tag">Problem-Solving</span>
+            <span class="skill-tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">03 &mdash; Projects</p>
+        <h2 class="section-title">Things I've <span class="gradient-text">built</span></h2>
+        <p class="section-subtitle">Real-world projects ranging from AI-powered systems to full-stack web applications.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Featured: ClaimLens -->
+        <div class="project-featured reveal">
+          <div class="project-banner">
+            <img src="assets/claimlens.png" alt="ClaimLens Dashboard" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-body">
+            <div class="project-featured-badge">⭐ Featured Project</div>
+            <h3 class="project-title">ClaimLens — Hospital Insurance Management</h3>
+            <p class="project-desc">
+              A comprehensive, production-grade hospital insurance management platform with role-based dashboards (Doctor, CFO, Claims Manager, Admin, Clerk), ABHA/ABDM &amp; FHIR integration, MFA authentication, real-time analytics, and AI-powered claim processing.
+            </p>
+            <div class="project-tech">
+              <span>FastAPI</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+              <span>Docker</span>
+              <span>Redis</span>
+              <span>FHIR</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/abyjohny" class="project-link" target="_blank" rel="noopener">
+                <i data-lucide="github" style="width:16px;height:16px"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crew AI -->
+        <div class="project-card reveal">
+          <div class="project-banner">
+            <img src="assets/crewai.png" alt="Crew AI Multi-Agent System" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Multi-Agent Task Automation</h3>
+            <p class="project-desc">
+              Built a Crew AI project coordinating multiple agents for automated task execution — data retrieval, processing, and summarization. Integrated external APIs with sequential and parallel task handling.
+            </p>
+            <div class="project-tech">
+              <span>Crew AI</span>
+              <span>Python</span>
+              <span>REST APIs</span>
+              <span>LLMs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hand Sign Recognition -->
+        <div class="project-card reveal">
+          <div class="project-banner">
+            <img src="assets/handsign.png" alt="Hand Sign Recognition" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Hand Sign Recognition System</h3>
+            <p class="project-desc">
+              AI-powered gesture recognition system classifying A–Z alphabet signs using CNNs. Features real-time gesture tracking for seamless, dynamic identification in diverse conditions.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>OpenCV</span>
+              <span>TensorFlow</span>
+              <span>CNN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Battery Fault Prediction -->
+        <div class="project-card reveal">
+          <div class="project-banner">
+            <img src="assets/battery.png" alt="Battery Fault Prediction" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">AI Battery Fault Prediction</h3>
+            <p class="project-desc">
+              AI-powered battery fault prediction system for vehicles. Real-time monitoring and diagnostics using ML algorithms for high-accuracy fault detection, reducing maintenance costs.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>scikit-learn</span>
+              <span>Data Analysis</span>
+              <span>ML</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE & EDUCATION ============ -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">04 &mdash; Journey</p>
+        <h2 class="section-title">Experience &amp; <span class="gradient-text">Education</span></h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Experience -->
+        <div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;margin-bottom:32px;color:var(--accent-light)" class="reveal">💼 Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Jul 2024 — May 2025</div>
+              <div class="timeline-title">Java Full Stack Development</div>
+              <div class="timeline-place">JSpiders, Kochi</div>
+              <div class="timeline-desc">
+                Mastering Java (Core, OOP, Advanced), building front-end UIs with HTML/CSS/JS, and developing SQL queries for relational databases. Full-stack training program covering enterprise development practices.
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2024</div>
+              <div class="timeline-title">Data Science Intern</div>
+              <div class="timeline-place">Teachnook, Online</div>
+              <div class="timeline-desc">
+                Gained hands-on experience with data science methodologies, machine learning algorithms, and data visualization techniques.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;margin-bottom:32px;color:var(--cyan)" class="reveal">🎓 Education</h3>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Aug 2020 — May 2024</div>
+              <div class="timeline-title">B.Tech in AI &amp; Data Science</div>
+              <div class="timeline-place">Viswajyothi College of Engineering and Technology, Vazhakulam</div>
+              <div class="timeline-desc">
+                Specialized in Artificial Intelligence and Data Science. Class representative of AD department. Built multiple ML and AI projects during the program.
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Jul 2018 — Jun 2020</div>
+              <div class="timeline-title">Higher Secondary School</div>
+              <div class="timeline-place">St. Stephens H.S.S, Keerampara</div>
+              <div class="timeline-desc">
+                Completed higher secondary education with focus on science and mathematics.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">05 &mdash; Certifications</p>
+        <h2 class="section-title">Professional <span class="gradient-text">certifications</span></h2>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon">🤖</div>
+          <div class="cert-info">
+            <h4>Generative Models for Developers</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">📊</div>
+          <div class="cert-info">
+            <h4>Data Visualization using Python</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">📈</div>
+          <div class="cert-info">
+            <h4>Tableau in 7 Steps</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">🏅</div>
+          <div class="cert-info">
+            <h4>Tableau Desktop Specialist</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">💬</div>
+          <div class="cert-info">
+            <h4>Prompt Engineering</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">🧩</div>
+          <div class="cert-info">
+            <h4>Introduction to OpenAI GPT Models</h4>
+            <p>Infosys Springboard · 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">06 &mdash; Contact</p>
+        <h2 class="section-title">Let's <span class="gradient-text">connect</span></h2>
+        <p class="section-subtitle">Interested in working together or just want to say hi? Drop me a message!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-card reveal">
+            <div class="contact-icon">📧</div>
+            <div class="contact-detail">
+              <h4>Email</h4>
+              <a href="mailto:abyjohny25@gmail.com">abyjohny25@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal">
+            <div class="contact-icon">📱</div>
+            <div class="contact-detail">
+              <h4>Phone</h4>
+              <a href="tel:+917902644841">+91 7902644841</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <h4>Location</h4>
+              <p>Kothamangalam, Ernakulam, India</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card reveal">
+            <div class="contact-icon">🐙</div>
+            <div class="contact-detail">
+              <h4>GitHub</h4>
+              <a href="https://github.com/abyjohny" target="_blank" rel="noopener">github.com/abyjohny</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xpznqkjq" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Let's collaborate!" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:fit-content">
+            <i data-lucide="send" style="width:18px;height:18px"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2025 Aby Johny. Built with ❤️</p>
+        <div class="footer-socials">
+          <a href="https://github.com/abyjohny" target="_blank" rel="noopener" aria-label="GitHub">
+            <i data-lucide="github" style="width:20px;height:20px"></i>
+          </a>
+          <a href="mailto:abyjohny25@gmail.com" aria-label="Email">
+            <i data-lucide="mail" style="width:20px;height:20px"></i>
+          </a>
+          <a href="tel:+917902644841" aria-label="Phone">
+            <i data-lucide="phone" style="width:20px;height:20px"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i data-lucide="arrow-up" style="width:22px;height:22px"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
