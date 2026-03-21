@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import {
-  ArrowUp, Star, Github, Linkedin, Mail, Phone, MapPin,
+  ArrowUp, Star, Github, Linkedin, Mail, MapPin,
   Code, Brain, Database, Settings, HeartPulse,
   Briefcase, GraduationCap, Award, BarChart3, MessageSquare,
   Sparkles, Bot, Cpu
@@ -126,9 +126,9 @@ export default function App() {
               <div className="about-meta">
                 {[
                   { n: '2024', l: 'B.Tech Graduated' },
-                  { n: '8+', l: 'Technologies' },
+                  { n: '15+', l: 'Technologies' },
                   { n: '6', l: 'Certifications' },
-                  { n: '4+', l: 'Projects Shipped' },
+                  { n: '4+', l: 'Projects Built' },
                 ].map(s => (
                   <div className="meta-item" key={s.l}>
                     <div className="meta-number">{s.n}</div>
@@ -394,11 +394,7 @@ export default function App() {
                   <div className="cl-icon"><Mail size={18} /></div>
                   <div><div className="cl-label">Email</div><div className="cl-value">abyjohny25@gmail.com</div></div>
                 </a>
-                <a href="tel:+917902644841" className="contact-link">
-                  <div className="cl-icon"><Phone size={18} /></div>
-                  <div><div className="cl-label">Phone</div><div className="cl-value">+91 7902644841</div></div>
-                </a>
-                <a href="https://github.com/abyjohny" target="_blank" rel="noopener" className="contact-link">
+                <a href="https://github.com/abyjohny" target="_blank" rel="noopener noreferrer" className="contact-link">
                   <div className="cl-icon"><Github size={18} /></div>
                   <div><div className="cl-label">GitHub</div><div className="cl-value">github.com/abyjohny</div></div>
                 </a>
@@ -423,7 +419,7 @@ export default function App() {
             <div className="footer-copy">© 2025 Aby Johny</div>
             <div className="footer-links">
               <a href="https://github.com/abyjohny" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a>
-              <a href="https://linkedin.com/in/abyjohny" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
+              <a href="https://www.linkedin.com/in/aby-johny-829827230" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
               <a href="mailto:abyjohny25@gmail.com" aria-label="Email"><Mail size={18} /></a>
             </div>
           </div>
@@ -466,7 +462,7 @@ function ContactForm() {
       </div>
       <div className="form-group">
         <label htmlFor="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Let's collaborate on..." />
+        <input type="text" id="subject" name="subject" placeholder="Let's collaborate on..." required />
       </div>
       <div className="form-group">
         <label htmlFor="message">Message</label>

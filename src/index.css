@@ -255,6 +255,7 @@ button{cursor:pointer;font-family:inherit}
   position:relative;overflow:hidden;
 }
 .skill-cell.learning{grid-column:1/-1; background:var(--bg-raised)}
+.skill-cell.learning .pill-wrap{max-width:600px}
 .skill-cell:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 .skill-cell::after{
   content:'';position:absolute;top:0;right:0;
@@ -345,6 +346,7 @@ button{cursor:pointer;font-family:inherit}
 .proj-link:hover svg{transform:translateX(4px)}
 
 .featured-proj {
+  grid-template-columns: 1fr !important;
   background:var(--bg-card); border:1px solid var(--accent-dim);
   border-radius:var(--radius); padding:40px; margin-top: 20px; box-shadow:0 20px 40px rgba(0,0,0,.2);
 }
