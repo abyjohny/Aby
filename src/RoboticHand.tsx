@@ -8,6 +8,7 @@ Title: Robotic Hand
 */
 
 import * as THREE from 'three'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import type { GLTF } from 'three-stdlib'
 
@@ -75,11 +76,11 @@ type GLTFResult = GLTF & {
     Hand: THREE.MeshStandardMaterial
     lambert1: THREE.MeshStandardMaterial
   }
-  animations: GLTFAction[]
+  animations: THREE.AnimationClip[]
 }
 
-export default function RoboticHand(props: JSX.IntrinsicElements['group']) {
-  const { nodes } = useGLTF(import.meta.env.BASE_URL + 'robotic_hand/scene.gltf') as GLTFResult
+export default function RoboticHand(props: React.JSX.IntrinsicElements['group']) {
+  const { nodes } = useGLTF(import.meta.env.BASE_URL + 'robotic_hand/scene.gltf') as unknown as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>

@@ -9,8 +9,6 @@ import { useReveal, useScrolled } from './hooks';
 import { Scene3D, ClaimLensScene, CrewAIScene, HandSignScene, BatteryScene } from './Scenes3D';
 import ParticleBg from './ParticleBg';
 
-const BASE = import.meta.env.BASE_URL;
-
 /* ── Tiny reveal wrapper ── */
 function Rv({ dir = 'up', children, className = '' }: {
   dir?: 'up' | 'left' | 'right' | 'scale'; children: React.ReactNode; className?: string;
