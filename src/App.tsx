@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import {
-  ArrowUp, ArrowRight, Star, Github, Mail, Phone, MapPin,
+  ArrowUp, Star, Github, Linkedin, Mail, Phone, MapPin,
   Code, Brain, Database, Settings, HeartPulse,
   Briefcase, GraduationCap, Award, BarChart3, MessageSquare,
   Sparkles, Bot, Cpu
@@ -50,6 +50,7 @@ export default function App() {
             <a href="#skills" onClick={e => { e.preventDefault(); navClick('skills'); }}>Skills</a>
             <a href="#work" onClick={e => { e.preventDefault(); navClick('work'); }}>Work</a>
             <a href="#journey" onClick={e => { e.preventDefault(); navClick('journey'); }}>Journey</a>
+            <a href="./assets/Aby_Johny_Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Resume</a>
             <a href="#contact" className="cta" onClick={e => { e.preventDefault(); navClick('contact'); }}>Let's Talk</a>
           </div>
           <button className={`hamburger${menuOpen ? ' active' : ''}`} aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
@@ -58,6 +59,7 @@ export default function App() {
         </div>
       </nav>
 
+      <main>
       {/* ═══ HERO ═══ */}
       <section className="hero" id="hero">
         <div className="hero-grid">
@@ -76,20 +78,19 @@ export default function App() {
             <Rv>
               <div className="hero-actions">
                 <a href="#work" className="btn btn-fill" onClick={e => { e.preventDefault(); scrollTo('work'); }}>View My Work →</a>
-                <a href="#contact" className="btn btn-ghost" onClick={e => { e.preventDefault(); scrollTo('contact'); }}>Get In Touch</a>
+                {/* Placeholder link for the Resume PDF */}
+                <a href="./assets/Aby_Johny_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Download Resume</a>
               </div>
             </Rv>
           </div>
 
 
           <Rv dir="right">
-            <div className="hero-stat-card">
-              <div className="stat-row">
-                <div className="stat-big">4+</div>
-                <div className="stat-unit">// projects shipped</div>
-              </div>
-              <div className="stat-desc">
-                From CNN-based gesture recognition to full-stack hospital management with FHIR, ABDM &amp; multi-role dashboards.
+            <div className="hero-photo-card">
+              <img src={import.meta.env.BASE_URL + "profile.png"} alt="Aby Johny" />
+              <div className="photo-label">
+                <div className="pl-name">Aby Johny</div>
+                <div className="pl-role">Healthcare Software Engineer</div>
               </div>
             </div>
           </Rv>
@@ -116,13 +117,7 @@ export default function App() {
               </blockquote>
               <div className="about-text">
                 <p>
-                  I'm a <strong>B.Tech graduate in Artificial Intelligence &amp; Data Science</strong> from Viswajyothi College of Engineering and Technology. My journey took me from training CNNs for hand gesture recognition to building production healthcare infrastructure.
-                </p>
-                <p>
-                  Currently working as a <strong>Software Developer Intern at RecodeAI Solutions</strong>, I'm building the <strong>ClaimsLens</strong> hospital insurance platform — handling <strong>FHIR/HL7 compliance, SNOMED CT terminology mapping, ABDM/ABHA integration</strong>, and multi-role hospital dashboards with MFA security — not toy projects, but real infrastructure.
-                </p>
-                <p>
-                  I bring a rare combination: the AI/ML mindset to model complex problems, and the software engineering discipline to ship reliable systems.
+                  AI & Data Science graduate building production-grade healthcare infrastructure in India. Currently architecting ClaimsLens — an ABDM-compliant HIP platform implementing FHIR R4 across the full insurance claim lifecycle, from consent management to NHCX submission. I work at the intersection of complex compliance requirements and real engineering constraints.
                 </p>
               </div>
             </Rv>
@@ -159,44 +154,39 @@ export default function App() {
             </Rv>
           </div>
 
-          <div className="skills-bento">
-            <Rv dir="scale" className="skill-cell sc-5">
-              <h3><Code size={20} className="skill-icon" /> Languages</h3>
-              <div className="skill-caption">// core programming</div>
+          <div className="skills-grid">
+            <Rv dir="scale" className="skill-cell">
+              <h3><Database size={20} className="skill-icon" aria-hidden="true" /> Backend</h3>
               <div className="pill-wrap">
-                {['Java', 'Python', 'JavaScript', 'TypeScript', 'C', 'R', 'SQL'].map(s => <span className="pill" key={s}>{s}</span>)}
+                {['Python', 'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Celery', 'Pydantic v2', 'REST APIs'].map(s => <span className="pill" key={s}>{s}</span>)}
               </div>
             </Rv>
 
-            <Rv dir="scale" className="skill-cell sc-4">
-              <h3><Brain size={20} className="skill-icon" /> AI / ML</h3>
-              <div className="skill-caption">// intelligent systems</div>
+            <Rv dir="scale" className="skill-cell">
+              <h3><HeartPulse size={20} className="skill-icon" aria-hidden="true" /> Healthcare / ABDM</h3>
               <div className="pill-wrap">
-                {['TensorFlow', 'PyTorch', 'Keras', 'scikit-learn', 'OpenCV', 'Crew AI'].map(s => <span className="pill" key={s}>{s}</span>)}
+                {['FHIR R4', 'ABDM HIP/HIU flows', 'NRCES IG', 'NHCX', 'Consent Management', 'SNOMED CT', 'ICD-10', 'LOINC'].map(s => <span className="pill green" key={s}>{s}</span>)}
               </div>
             </Rv>
 
-            <Rv dir="scale" className="skill-cell sc-3">
-              <h3><Database size={20} className="skill-icon" /> Data</h3>
-              <div className="skill-caption">// storage &amp; viz</div>
+            <Rv dir="scale" className="skill-cell">
+              <h3><Settings size={20} className="skill-icon" aria-hidden="true" /> Cloud & DevOps</h3>
               <div className="pill-wrap">
-                {['PostgreSQL', 'MySQL', 'Redis', 'Tableau'].map(s => <span className="pill" key={s}>{s}</span>)}
+                {['Azure (Blob Storage, Key Vault, Managed Identity)', 'GitHub Actions', 'Docker', 'OIDC'].map(s => <span className="pill" key={s}>{s}</span>)}
               </div>
             </Rv>
 
-            <Rv dir="scale" className="skill-cell sc-7">
-              <h3><Settings size={20} className="skill-icon" /> Frameworks &amp; DevOps</h3>
-              <div className="skill-caption">// building &amp; deploying</div>
+            <Rv dir="scale" className="skill-cell">
+              <h3><Code size={20} className="skill-icon" aria-hidden="true" /> Frontend</h3>
               <div className="pill-wrap">
-                {['FastAPI', 'React', 'Spring Boot', 'Vite', 'Docker', 'Git', 'Nginx', 'Azure'].map(s => <span className="pill" key={s}>{s}</span>)}
+                {['React', 'TypeScript', 'Vite'].map(s => <span className="pill" key={s}>{s}</span>)}
               </div>
             </Rv>
 
-            <Rv dir="scale" className="skill-cell sc-5">
-              <h3><HeartPulse size={20} className="skill-icon" /> Healthcare Domain</h3>
-              <div className="skill-caption">// why I'm different</div>
+            <Rv dir="scale" className="skill-cell learning">
+              <h3><Brain size={20} className="skill-icon" aria-hidden="true" /> Currently Learning</h3>
               <div className="pill-wrap">
-                {['FHIR / HL7', 'SNOMED CT', 'ICD-10', 'ABDM / ABHA', 'NHCX'].map(s => <span className="pill green" key={s}>{s}</span>)}
+                {['ABDM M2/M3 certification flows', 'SNOMED CSNOtk', 'LOINC toolkit'].map(s => <span className="pill" key={s}>{s}</span>)}
               </div>
             </Rv>
           </div>
@@ -218,26 +208,23 @@ export default function App() {
 
           <div className="proj-list">
             {/* ClaimLens */}
-            <div className="proj-item">
+            <div className="proj-item featured-proj">
               <Rv dir="left">
-                <div className="proj-visual">
+                <div className="proj-visual" aria-hidden="true">
                   <Scene3D><ClaimLensScene /></Scene3D>
-                  <div className="proj-badge"><Star size={12} /> Featured</div>
-                  <div className="proj-number">01</div>
+                  <div className="proj-badge"><Star size={12} aria-hidden="true" /> Featured Project</div>
+                  <div className="proj-number" aria-hidden="true">01</div>
                 </div>
               </Rv>
               <Rv dir="right" className="proj-info">
-                <div className="proj-label">Healthcare · Full-Stack · Production</div>
-                <h3>ClaimsLens — Hospital Insurance Platform</h3>
+                <div className="proj-label">NHCX Digitization · Full-Stack · Production</div>
+                <h3>ClaimsLens — ABDM HIP Platform</h3>
                 <p className="proj-desc">
-                  A complete hospital insurance management system with role-based dashboards for Doctors, CFOs, Claims Managers, Admins and Clerks. Features FHIR/HL7 integration, ABDM/ABHA connectivity, SNOMED-to-ICD10 dual coding, JWT+MFA authentication, and real-time analytics.
+                  ClaimsLens is an ABDM-certified Health Information Provider (HIP) platform built for insurance claim digitization via NHCX. I architected and built the full backend — FHIR R4 bundle generation for all HI types (Discharge Summary, OPConsult, Diagnostic Report, Prescription, Immunization), ABDM consent lifecycle (grant/revoke/expire with Celery jobs), AES-256-GCM document encryption on Azure Blob Storage, and ECDH-based data push to Health Information Users. Stack: FastAPI, PostgreSQL, SQLAlchemy, Celery, React, Azure. ABDM M1 certification in progress.
                 </p>
                 <div className="proj-tech-pills">
-                  {['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Docker', 'Redis', 'FHIR', 'Azure'].map(t => <span key={t}>{t}</span>)}
+                  {['FastAPI', 'React', 'PostgreSQL', 'Celery', 'Azure', 'FHIR R4'].map(t => <span key={t}>{t}</span>)}
                 </div>
-                <a href="https://claimslens.com" target="_blank" rel="noopener" className="proj-link">
-                  Visit Website <ArrowRight size={16} />
-                </a>
               </Rv>
             </div>
 
@@ -435,13 +422,14 @@ export default function App() {
           <div className="footer-inner">
             <div className="footer-copy">© 2025 Aby Johny</div>
             <div className="footer-links">
-              <a href="https://github.com/abyjohny" target="_blank" rel="noopener" aria-label="GitHub"><Github size={18} /></a>
+              <a href="https://github.com/abyjohny" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a>
+              <a href="https://linkedin.com/in/abyjohny" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
               <a href="mailto:abyjohny25@gmail.com" aria-label="Email"><Mail size={18} /></a>
-              <a href="tel:+917902644841" aria-label="Phone"><Phone size={18} /></a>
             </div>
           </div>
         </div>
       </footer>
+      </main>
 
       {/* Scroll to top */}
       <button className={`to-top${showTop ? ' show' : ''}`} aria-label="Back to top"

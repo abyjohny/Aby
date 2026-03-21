@@ -5,26 +5,26 @@
 
 /* ---------- Tokens ---------- */
 :root {
-  --bg:         #0b0b0b;
-  --bg-raised:  #141414;
-  --bg-card:    #1a1a1a;
-  --bg-subtle:  #111111;
-  --border:     rgba(255,255,255,.07);
-  --border-hover: rgba(255,255,255,.14);
+  --bg:         #0e100f;
+  --bg-raised:  #161917;
+  --bg-card:    #1a1e1b;
+  --bg-subtle:  #131614;
+  --border:     rgba(255,255,255,.08);
+  --border-hover: rgba(255,255,255,.16);
 
-  --text:       #e4e0d9;
-  --text-dim:   #8a857c;
-  --text-muted: #555249;
+  --text:       #e8e2d4;
+  --text-dim:   #9ca39d;
+  --text-muted: #6b736e;
 
-  --accent:     #c9a96e;
-  --accent-dim: rgba(201,169,110,.15);
-  --accent-glow:rgba(201,169,110,.08);
-  --sage:       #7a9e7e;
-  --sage-dim:   rgba(122,158,126,.12);
+  --accent:     #b5c97a;
+  --accent-dim: rgba(181, 201, 122,.15);
+  --accent-glow:rgba(181, 201, 122,.08);
+  --sage:       #8a9c8f;
+  --sage-dim:   rgba(138, 156, 143,.12);
 
-  --serif:      'Cormorant Garamond', 'Georgia', serif;
-  --sans:       'Inter', system-ui, -apple-system, sans-serif;
-  --mono:       'JetBrains Mono', 'Fira Code', monospace;
+  --serif:      'DM Serif Display', serif;
+  --sans:       'DM Sans', system-ui, -apple-system, sans-serif;
+  --mono:       'Space Mono', monospace;
 
   --max-w:      1280px;
   --radius:     12px;
@@ -70,7 +70,7 @@ button{cursor:pointer;font-family:inherit}
   transition:background .5s,backdrop-filter .5s;
 }
 .nav.scrolled{
-  background:rgba(11,11,11,.85);
+  background:rgba(14,16,15,.9);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
@@ -245,15 +245,16 @@ button{cursor:pointer;font-family:inherit}
 .meta-label{font-size:.75rem;color:var(--text-muted);margin-top:2px;font-family:var(--mono);letter-spacing:.04em}
 
 /* ============================================
-   SKILLS — bento
+   SKILLS — Clusters
    ============================================ */
-.skills-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .skill-cell{
   border-radius:var(--radius);background:var(--bg-card);
   border:1px solid var(--border);padding:28px;
   transition:border-color .4s,transform .4s var(--ease),box-shadow .4s;
   position:relative;overflow:hidden;
 }
+.skill-cell.learning{grid-column:1/-1; background:var(--bg-raised)}
 .skill-cell:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 .skill-cell::after{
   content:'';position:absolute;top:0;right:0;
@@ -261,8 +262,6 @@ button{cursor:pointer;font-family:inherit}
   background:var(--accent-glow);transition:width .4s,height .4s;pointer-events:none;
 }
 .skill-cell:hover::after{width:120px;height:120px}
-.sc-5{grid-column:span 5}.sc-4{grid-column:span 4}.sc-3{grid-column:span 3}
-.sc-7{grid-column:span 7}.sc-6{grid-column:span 6}
 
 .skill-cell h3{
   font-family:var(--serif);font-size:1.3rem;font-weight:600;
@@ -344,6 +343,12 @@ button{cursor:pointer;font-family:inherit}
 .proj-link:hover{gap:14px}
 .proj-link svg{transition:transform .3s var(--ease)}
 .proj-link:hover svg{transform:translateX(4px)}
+
+.featured-proj {
+  background:var(--bg-card); border:1px solid var(--accent-dim);
+  border-radius:var(--radius); padding:40px; margin-top: 20px; box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+.featured-proj .proj-visual { aspect-ratio: 16/9; margin-bottom: 20px; }
 
 /* ============================================
    JOURNEY
@@ -468,24 +473,35 @@ button{cursor:pointer;font-family:inherit}
   .proj-item.reverse .proj-visual{order:0}
   .proj-item.reverse .proj-info{order:0}
   .proj-visual{aspect-ratio:16/9}
+  .featured-proj { padding: 30px; }
   .journey-cols{grid-template-columns:1fr;gap:48px}
   .contact-split{grid-template-columns:1fr;gap:48px}
-  .skills-bento{grid-template-columns:repeat(6,1fr)}
-  .sc-5,.sc-4,.sc-3,.sc-7,.sc-6{grid-column:span 6}
 }
 @media(max-width:768px){
   .nav-links{
-    display:none;position:fixed;inset:0;
-    background:rgba(11,11,11,.97);backdrop-filter:blur(20px);
-    flex-direction:column;justify-content:center;align-items:center;gap:24px;
+    display:flex; position:absolute; top:100%; left:0; right:0;
+    background:rgba(14,16,15,.98); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    flex-direction:column; padding:24px clamp(20px,4vw,48px); gap:20px;
+    align-items:flex-start;
+    transform:translateY(-150%); transition:transform .4s var(--ease);
+    z-index:-1; pointer-events:none; opacity:0;
   }
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1rem}
+  .nav-links.open{transform:translateY(0); pointer-events:auto; opacity:1;}
+  .nav-links a{font-size:1rem; width:100%; padding:8px 0;}
   .hamburger{display:flex}
   .hero-h1{font-size:clamp(2.6rem,10vw,3.4rem)}
-  .skills-bento{grid-template-columns:1fr}
-  .sc-5,.sc-4,.sc-3,.sc-7,.sc-6{grid-column:span 1}
+  .skills-grid{grid-template-columns:1fr}
   .cert-list{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .proj-number{display:none}
+  
+  .featured-proj {
+    margin-left: calc(-1 * clamp(20px, 4vw, 48px));
+    margin-right: calc(-1 * clamp(20px, 4vw, 48px));
+    padding: clamp(20px, 4vw, 48px);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 }
