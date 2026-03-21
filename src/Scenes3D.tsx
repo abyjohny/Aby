@@ -62,11 +62,23 @@ function Panel({ pos, rot, scale, color = '#1a1a1a' }: {
 
 export function ClaimLensScene() {
   const g = useRef<THREE.Group>(null!);
-  useFrame(({ clock }) => {
-    g.current.rotation.y = Math.sin(clock.elapsedTime * 0.25) * 0.2;
+  const [hovered, setHovered] = useState(false);
+  
+  useFrame((state, delta) => {
+    const targetX = hovered ? state.pointer.y * -0.2 : 0;
+    const targetY = (hovered ? state.pointer.x * 0.4 : 0) + Math.sin(state.clock.elapsedTime * 0.25) * 0.2;
+    const s = hovered ? 1.08 : 1;
+    
+    g.current.rotation.x = THREE.MathUtils.lerp(g.current.rotation.x, targetX, delta * 5);
+    g.current.rotation.y = THREE.MathUtils.lerp(g.current.rotation.y, targetY, delta * 5);
+    g.current.scale.lerp(new THREE.Vector3(s, s, s), delta * 5);
   });
+  
   return (
-    <group ref={g}>
+    <group ref={g} 
+      onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
+      onPointerOut={() => { setHovered(false); document.body.style.cursor = 'auto'; }}
+    >
       <Panel pos={[0, 0, 0]} rot={[0, -0.15, 0]} scale={[2.4, 1.5, 1]} />
       <Panel pos={[1.5, 0.2, -0.5]} rot={[0, -0.4, 0]} scale={[1.1, 1.3, 1]} color="#222" />
       <Panel pos={[-1.3, 0.5, 0.3]} rot={[0, 0.2, 0.05]} scale={[0.9, 0.6, 1]} color="#1e1e1e" />
@@ -94,7 +106,19 @@ export function ClaimLensScene() {
    ═══════════════════════════════════════ */
 export function CrewAIScene() {
   const g = useRef<THREE.Group>(null!);
-  useFrame(({ clock }) => { g.current.rotation.y = clock.elapsedTime * 0.1; });
+  const [hovered, setHovered] = useState(false);
+  const speed = useRef(0.1);
+
+  useFrame((state, delta) => {
+    speed.current = THREE.MathUtils.lerp(speed.current, hovered ? 0.3 : 0.1, delta * 4);
+    g.current.rotation.y += delta * speed.current;
+    
+    const targetX = hovered ? state.pointer.y * -0.2 : 0;
+    g.current.rotation.x = THREE.MathUtils.lerp(g.current.rotation.x, targetX, delta * 4);
+    
+    const s = hovered ? 1.08 : 1;
+    g.current.scale.lerp(new THREE.Vector3(s, s, s), delta * 4);
+  });
 
   const nodes: [number, number, number][] = useMemo(() => [
     [-1.2, 0.5, 0], [1.0, 0.8, -0.3], [0, -0.6, 0.5], [1.3, -0.4, -0.2], [-0.8, -0.3, -0.5]
@@ -103,7 +127,10 @@ export function CrewAIScene() {
   // No longer need lineGeos with BufferGeometry since we use drei's Line component
 
   return (
-    <group ref={g}>
+    <group ref={g}
+      onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
+      onPointerOut={() => { setHovered(false); document.body.style.cursor = 'auto'; }}
+    >
       {nodes.map((pos, i) => (
         <group key={i}>
           <mesh position={pos}>
@@ -130,13 +157,24 @@ import RoboticHand from './RoboticHand';
 
 export function HandSignScene() {
   const g = useRef<THREE.Group>(null!);
-  useFrame(({ clock }) => {
-    const t = clock.elapsedTime;
-    g.current.rotation.y = Math.sin(t * 0.3) * 0.35;
-    g.current.rotation.x = Math.sin(t * 0.2) * 0.1 - 0.15;
+  const [hovered, setHovered] = useState(false);
+  
+  useFrame((state, delta) => {
+    const t = state.clock.elapsedTime;
+    const targetX = (hovered ? state.pointer.y * -0.3 : 0) + Math.sin(t * 0.2) * 0.1 - 0.15;
+    const targetY = (hovered ? state.pointer.x * 0.4 : 0) + Math.sin(t * 0.3) * 0.35;
+    const s = hovered ? 1.45 : 1.3;
+
+    g.current.rotation.x = THREE.MathUtils.lerp(g.current.rotation.x, targetX, delta * 4);
+    g.current.rotation.y = THREE.MathUtils.lerp(g.current.rotation.y, targetY, delta * 4);
+    g.current.scale.lerp(new THREE.Vector3(s, s, s), delta * 4);
   });
+  
   return (
-    <group ref={g} position={[0, -0.3, 0]} scale={1.3}>
+    <group ref={g} position={[0, -0.3, 0]} scale={1.3}
+      onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
+      onPointerOut={() => { setHovered(false); document.body.style.cursor = 'auto'; }}
+    >
       {/* The realistic hand model */}
       <RoboticHand position={[0, -0.6, 0]} scale={15} rotation={[0.2, 0, 0]} />
       
@@ -171,11 +209,25 @@ function Pulse({ offset }: { offset: number }) {
 
 export function BatteryScene() {
   const g = useRef<THREE.Group>(null!);
-  useFrame(({ clock }) => {
-    g.current.rotation.y = clock.elapsedTime * 0.15;
+  const [hovered, setHovered] = useState(false);
+  const speed = useRef(0.15);
+  
+  useFrame((state, delta) => {
+    speed.current = THREE.MathUtils.lerp(speed.current, hovered ? 0.4 : 0.15, delta * 4);
+    g.current.rotation.y += delta * speed.current;
+    
+    const targetX = hovered ? state.pointer.y * -0.2 : 0;
+    g.current.rotation.x = THREE.MathUtils.lerp(g.current.rotation.x, targetX, delta * 4);
+    
+    const s = hovered ? 1.05 : 1;
+    g.current.scale.lerp(new THREE.Vector3(s, s, s), delta * 4);
   });
+  
   return (
-    <group ref={g}>
+    <group ref={g}
+      onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
+      onPointerOut={() => { setHovered(false); document.body.style.cursor = 'auto'; }}
+    >
       <mesh>
         <capsuleGeometry args={[0.6, 2, 8, 16]} />
         <meshPhysicalMaterial color="#111" transmission={0.95} transparent opacity={1} roughness={0.05} metalness={0.3} clearcoat={1} />
