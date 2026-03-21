@@ -10,7 +10,7 @@ Title: Robotic Hand
 import * as THREE from 'three'
 import React, from 'react'
 import { useGLTF } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import type { GLTF } from 'three-stdlib'
 
 const customMat = new THREE.MeshPhysicalMaterial({
   color: "#1a1510",
