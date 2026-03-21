@@ -44,6 +44,63 @@ button{cursor:pointer;font-family:inherit}
 .wrap{max-width:var(--max-w);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
 
 /* ============================================
+   ANIMATED BACKGROUND
+   ============================================ */
+.bg-live{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+.bg-orb{
+  position:absolute;border-radius:50%;
+  filter:blur(100px);opacity:.12;
+  will-change:transform;
+}
+.bg-orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+  top:-10%;left:-5%;
+  animation:orb-drift-1 25s ease-in-out infinite;
+}
+.bg-orb-2{
+  width:500px;height:500px;
+  background:radial-gradient(circle,var(--sage) 0%,transparent 70%);
+  bottom:10%;right:-8%;
+  animation:orb-drift-2 30s ease-in-out infinite;
+}
+.bg-orb-3{
+  width:400px;height:400px;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+  top:50%;left:40%;
+  animation:orb-drift-3 20s ease-in-out infinite;
+  opacity:.06;
+}
+.bg-grid{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+
+@keyframes orb-drift-1{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(80px,120px) scale(1.1)}
+  50%{transform:translate(160px,60px) scale(.95)}
+  75%{transform:translate(40px,-40px) scale(1.05)}
+}
+@keyframes orb-drift-2{
+  0%,100%{transform:translate(0,0) scale(1)}
+  25%{transform:translate(-100px,-80px) scale(1.15)}
+  50%{transform:translate(-60px,100px) scale(.9)}
+  75%{transform:translate(50px,40px) scale(1.08)}
+}
+@keyframes orb-drift-3{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(120px,-100px) scale(1.2)}
+  66%{transform:translate(-80px,80px) scale(.85)}
+}
+
+/* Make all content sit above the background */
+.nav,.hero,.section,.footer,.to-top{position:relative;z-index:1}
+
+/* ============================================
    REVEAL ANIMATIONS
    ============================================ */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
