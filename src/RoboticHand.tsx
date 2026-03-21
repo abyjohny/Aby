@@ -8,7 +8,6 @@ Title: Robotic Hand
 */
 
 import * as THREE from 'three'
-import React, from 'react'
 import { useGLTF } from '@react-three/drei'
 import type { GLTF } from 'three-stdlib'
 
