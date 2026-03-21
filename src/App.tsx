@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useReveal, useScrolled } from './hooks';
 import { Scene3D, ClaimLensScene, CrewAIScene, HandSignScene, BatteryScene } from './Scenes3D';
+import ParticleBg from './ParticleBg';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -37,13 +38,8 @@ export default function App() {
 
   return (
     <>
-      {/* ═══ ANIMATED BACKGROUND ═══ */}
-      <div className="bg-live">
-        <div className="bg-orb bg-orb-1" />
-        <div className="bg-orb bg-orb-2" />
-        <div className="bg-orb bg-orb-3" />
-        <div className="bg-grid" />
-      </div>
+      {/* ═══ PARTICLE BACKGROUND ═══ */}
+      <ParticleBg />
 
       {/* ═══ NAV ═══ */}
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
