@@ -226,15 +226,15 @@ export default function App() {
               </Rv>
               <Rv dir="right" className="proj-info">
                 <div className="proj-label">Healthcare · Full-Stack · Production</div>
-                <h3>ClaimLens — Hospital Insurance Platform</h3>
+                <h3>ClaimsLens — Hospital Insurance Platform</h3>
                 <p className="proj-desc">
                   A complete hospital insurance management system with role-based dashboards for Doctors, CFOs, Claims Managers, Admins and Clerks. Features FHIR/HL7 integration, ABDM/ABHA connectivity, SNOMED-to-ICD10 dual coding, JWT+MFA authentication, and real-time analytics.
                 </p>
                 <div className="proj-tech-pills">
                   {['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Docker', 'Redis', 'FHIR', 'Azure'].map(t => <span key={t}>{t}</span>)}
                 </div>
-                <a href="https://github.com/abyjohny" target="_blank" rel="noopener" className="proj-link">
-                  View on GitHub <ArrowRight size={16} />
+                <a href="https://claimslens.com" target="_blank" rel="noopener" className="proj-link">
+                  Visit Website <ArrowRight size={16} />
                 </a>
               </Rv>
             </div>
