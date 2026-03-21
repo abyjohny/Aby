@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a2f2c" stroke-width="1" opacity="0.5"/>
+      <circle cx="40" cy="40" r="1.5" fill="#b5c97a" opacity="0.3"/>
+    </pattern>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Space+Mono&amp;display=swap');
+      .name { font-family: 'DM Serif Display', serif; font-size: 96px; fill: #e8e2d4; font-weight: normal; }
+      .title { font-family: 'Space Mono', monospace; font-size: 32px; fill: #b5c97a; letter-spacing: 2px; }
+      .accent { fill: #b5c97a; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0e100f"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Accents / Circuit trace illusion -->
+  <path d="M 120 0 L 120 180 L 170 230 L 1100 230" fill="none" stroke="#b5c97a" stroke-width="2" opacity="0.4"/>
+  <circle cx="170" cy="230" r="4" fill="#b5c97a"/>
+  <circle cx="1100" cy="230" r="4" fill="#b5c97a"/>
+  
+  <path d="M 0 480 L 980 480 L 1030 530 L 1030 630" fill="none" stroke="#b5c97a" stroke-width="2" opacity="0.3"/>
+  <circle cx="980" cy="480" r="4" fill="#b5c97a" opacity="0.5"/>
+
+  <!-- Content -->
+  <g transform="translate(170, 360)">
+    <text x="0" y="0" class="name">Aby Johny</text>
+    <rect x="0" y="50" width="100" height="4" class="accent"/>
+    <text x="0" y="110" class="title">HEALTHCARE SOFTWARE ENGINEER</text>
+  </g>
+</svg>
