@@ -126,22 +126,7 @@ export function CrewAIScene() {
 /* ═══════════════════════════════════════
    3. HAND SIGN — Stylized hand
    ═══════════════════════════════════════ */
-function Finger({ pos, rot, len, r }: {
-  pos: [number, number, number]; rot: [number, number, number]; len: number; r: number;
-}) {
-  return (
-    <group position={pos} rotation={rot}>
-      <mesh position={[0, len / 2, 0]}>
-        <capsuleGeometry args={[r, len, 4, 8]} />
-        <meshPhysicalMaterial color="#1a1510" transmission={0.9} transparent opacity={1} roughness={0.1} metalness={0.4} clearcoat={1} />
-      </mesh>
-      <mesh position={[0, len + r, 0]}>
-        <sphereGeometry args={[r * 0.55, 8, 8]} />
-        <meshBasicMaterial color="#c9a96e" />
-      </mesh>
-    </group>
-  );
-}
+import RoboticHand from './RoboticHand';
 
 export function HandSignScene() {
   const g = useRef<THREE.Group>(null!);
@@ -152,19 +137,10 @@ export function HandSignScene() {
   });
   return (
     <group ref={g} position={[0, -0.3, 0]} scale={1.3}>
-      <mesh>
-        <boxGeometry args={[1, 1.1, 0.22]} />
-        <meshPhysicalMaterial color="#1a1510" transmission={0.9} transparent opacity={1} roughness={0.1} metalness={0.4} clearcoat={1} />
-      </mesh>
-      <mesh position={[0, 0, 0.05]}>
-        <sphereGeometry args={[0.1, 8, 8]} />
-        <meshBasicMaterial color="#c9a96e" transparent opacity={0.4} />
-      </mesh>
-      <Finger pos={[-0.35, 0.55, 0]} rot={[0, 0, 0.1]} len={0.55} r={0.065} />
-      <Finger pos={[-0.12, 0.6, 0]} rot={[0, 0, 0.03]} len={0.65} r={0.065} />
-      <Finger pos={[0.12, 0.6, 0]} rot={[0, 0, -0.03]} len={0.6} r={0.065} />
-      <Finger pos={[0.35, 0.55, 0]} rot={[0, 0, -0.1]} len={0.5} r={0.06} />
-      <Finger pos={[-0.55, -0.1, 0.05]} rot={[0, 0, 0.9]} len={0.45} r={0.07} />
+      {/* The realistic hand model */}
+      <RoboticHand position={[0, -0.6, 0]} scale={15} rotation={[0.2, 0, 0]} />
+      
+      {/* Surrounding tracking bounding box */}
       <mesh position={[0, 0.2, 0]}>
         <boxGeometry args={[1.5, 2, 0.6]} />
         <meshBasicMaterial color="#c9a96e" wireframe transparent opacity={0.03} />
